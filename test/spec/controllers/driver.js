@@ -11,7 +11,7 @@ describe('Controller: driverCtrl', function () {
     var scope = $rootScope.$new();
 
     var routeParams = $routeParams;
-    var routeParams.id = "vettel";
+    routeParams.id = "vettel";
 
     var httpMock = $httpBackend;
 
@@ -61,14 +61,15 @@ describe('Controller: driverCtrl', function () {
 
     var driverCtrl = $controller('driverCtrl', {
       $scope: scope,
-      $routeParams: routeParams
+      $routeParams : routeParams
     });
 
     httpMock.flush();
   }));
 
-  it('should retrieve the nationality of the driver', function (){
-  expect(scope.driver.nationality).toBe("German");
+  it('should retrieve the nationality of the driver', function () {
+    expect(scope.driver.nationality).toBe("German");
   });
+
 
 });
