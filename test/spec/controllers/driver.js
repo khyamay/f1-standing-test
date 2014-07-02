@@ -1,4 +1,3 @@
-'use strict';
 
 describe('Controller: driverCtrl', function () {
 
@@ -8,12 +7,12 @@ describe('Controller: driverCtrl', function () {
   var driverCtrl, scope;
 
   beforeEach(inject(function ($controller, $rootScope, $httpBackend, $routeParams) {
-    var scope = $rootScope.$new();
+    scope = $rootScope.$new();
 
-    var routeParams = $routeParams;
+    routeParams = $routeParams;
     routeParams.id = "vettel";
 
-    var httpMock = $httpBackend;
+    httpMock = $httpBackend;
 
     httpMock.expectJSONP("http://ergast.com/api/f1/2013/drivers/vettel/driverStandings.json?callback=JSON_CALLBACK").respond(
       {"MRData": {"StandingsTable": {"StandingsLists" : [{"DriverStandings":[
@@ -59,9 +58,9 @@ describe('Controller: driverCtrl', function () {
       ]}}}
     );
 
-    var driverCtrl = $controller('driverCtrl', {
+    driverCtrl = $controller('driverCtrl', {
       $scope: scope,
-      $routeParams : routeParams
+      $routeParams: routeParams
     });
 
     httpMock.flush();
@@ -70,6 +69,17 @@ describe('Controller: driverCtrl', function () {
   it('should retrieve the nationality of the driver', function () {
     expect(scope.driver.nationality).toBe("German");
   });
+
+  it('should retrieve the list of races of the current year', function (){
+    expect(scope.races.length).toBe(4);
+  });
+
+  it('should retrieve the list of the races of the current year', function (){
+    expect(scope.races[0].raceName).toBe("Australian Grand Prix");
+    expect(scope.races[1].raceName).toBe("Malaysian Grand Prix");
+    expect(scope.races[2].raceName).toBe("Chinese Grand Prix");
+    expect(scope.races[3].raceName).toBe("Bahrain Grand Prix");
+  })
 
 
 });
