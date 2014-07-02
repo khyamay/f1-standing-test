@@ -1,6 +1,5 @@
 'use strict';
 
-
 angular.module('f1App.controllers')
   .controller('driversCtrl', function ($scope, $routeParams, ergastAPIservice) {
     $scope.nameFilter = null;

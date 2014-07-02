@@ -1,5 +1,5 @@
 angular.module('f1App.services', [])
-.services('ergastAPIservice', function ($http){
+.factory('ergastAPIservice', function ($http){
 	var ergastAPI = {};
 
 	ergastAPI.getDrivers = function (){

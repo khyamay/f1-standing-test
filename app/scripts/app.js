@@ -1,8 +1,9 @@
 'use strict';
+angular.module('f1App.controllers', []);
 
-angular
-  .module('f1App', [
-    'f1App.controllers'
+angular.module('f1App', [
+    'f1App.controllers',
+    'f1App.services',
     'ngRoute'
   ])
   .config(function ($routeProvider) {
@@ -16,6 +17,6 @@ angular
         controller: 'driverCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/drivers'
       });
   });
