@@ -1,26 +1,19 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name formula1StandingTestApp
- * @description
- * # formula1StandingTestApp
- *
- * Main module of the application.
- */
 angular
-  .module('formula1StandingTestApp', [
+  .module('f1App', [
+    'f1App.controllers'
     'ngRoute'
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+      .when('/drivers', {
+        templateUrl: 'views/drivers.html',
+        controller: 'driversCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/drivers/:id', {
+        templateUrl: 'views/driver.html',
+        controller: 'driverCtrl'
       })
       .otherwise({
         redirectTo: '/'
